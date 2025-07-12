@@ -40,7 +40,7 @@ class GitHubPullsNamespace(BaseNamespace):
         """
         response = await self._client.async_call_api(
             endpoint=f"/repos/{repository_full_name(repository)}/pulls",
-            **kwargs,
+            params=kwargs,
         )
         response.data = [GitHubPullRequestModel(data) for data in response.data]
         return response
